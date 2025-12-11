@@ -2,6 +2,7 @@ package fr.sdv.species.repositories;
 
 import fr.sdv.species.model.Person;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Repository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,7 +29,15 @@ public interface PersonneRepository extends JpaRepository<Person, Long>, PersonR
   //Indice : utiliser une jointure (inner join) vers Animal OU utiliser l’opérateur MEMBEROF
   @Query("SELECT p FROM Person p JOIN p.animals a WHERE a.id = :animalId")
   List<Person> findByAnimalId(int animalId);
- // Générer x entités Person aléatoires
+  //Supprimer les personnes à partir de son nom (si plusieurs personnes ont le même nom, les supprimer toutes)
+  // En utilisant les méthodes dérivées de Spring Data JPA
+    @Modifying
+    @Transactional
+    void deleteByLastname(String lastname);
+
+
+
+
 
 
 

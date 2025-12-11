@@ -82,6 +82,8 @@ public class SpeciesApplication implements CommandLineRunner{
         System.out.println("Nombre total de personnes après génération : " + personneRepository.count());
         // Supprimer toutes les personnes qui n’ont pas d’animaux
         personneRepository.deletePersonsWithoutAnimals();
+        // Supprimer les personnes à partir de son nom
+        personneRepository.deleteByLastname("Wagner");
         // Afficher le nombre total de personnes après suppression
         System.out.println("Nombre total de personnes après suppression : " + personneRepository.count());
 
