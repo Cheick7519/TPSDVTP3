@@ -28,6 +28,20 @@ public class Species {
     public int getId() {
         return id;
     }
+    public String getCommonName() {
+        return commonName;
+    }
+    public void setCommonName(String commonName) {
+        this.commonName = commonName;
+    }
+    public String getLatinName() {
+        return latinName;
+    }
+    public void setLatinName(String latinName) {
+        this.latinName = latinName;
+    }
+
+
 
 
 }

@@ -39,6 +39,12 @@ public class SpeciesApplication implements CommandLineRunner{
         personneRepository.findAll().stream().findFirst().ifPresent(person -> {
             System.out.println("First person's name: " + person.getName());
         });
+        // Add more test cases as needed
+        // 1. Find the first Species by common name (exact match)
+        System.out.println(" Finding first Species by common name 'Lion': ");
+        speciesRepository.findFirstByCommonName("Lapin").ifPresent(species -> {
+            System.out.println("Found Species: " + species.getCommonName() + " (" + species.getLatinName() + ")");
+        });
 
 
     }
