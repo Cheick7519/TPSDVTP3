@@ -45,6 +45,36 @@ public class SpeciesApplication implements CommandLineRunner{
         speciesRepository.findFirstByCommonName("Lapin").ifPresent(species -> {
             System.out.println("Found Species: " + species.getCommonName() + " (" + species.getLatinName() + ")");
         });
+        // Retourner les Species avec un nom commun LIKE le paramètre fourni
+        System.out.println(" Finding Species with common name like 'a': ");
+        speciesRepository.findByCommonNameLike("a").forEach(species -> {
+            System.out.println("Found Species: " + species.getCommonName() + " (" + species.getLatinName() + ")");
+        });
+        // Chercher toutes les Species, ordonnées par nom commun ascendant
+        System.out.println(" All Species ordered by common name ascending: ");
+        speciesRepository.findAllOrderByCommonNameAsc().forEach(species -> {
+            System.out.println("Species: " + species.getCommonName() + " (" + species.getLatinName() + ")");
+        });
+        // Chercher les Personnes dont l’âge est entre « age min » et « age max ».
+        System.out.println(" Finding Persons with age between 20 and 30: ");
+        personneRepository.findByAgeBetween(20, 30).forEach(person -> {
+            System.out.println("Found Person: " + person.getName() + ", Age: " + person.getAge());
+        });
+        // Chercher toutes les Personnes qui possèdent l’animal donné en paramètre
+        System.out.println(" Finding Persons who own the animal with ID 1: ");
+        personneRepository.findByAnimalId(1).forEach(person -> {
+            System.out.println("Found Person: " + person.getName());
+        });
+
+        // Requête qui renvoie le nombre d’Animaux dont le Sex est égal à la valeur donnée en paramètres
+        System.out.println("Number of Animal by sex in param");
+        System.out.println(animalRepository.findNumberBySex("M"));
+        // Requête qui renvoie un booléen si l’animal fourni « appartient » à au moins une personne
+        System.out.println("Boolean if the animal belongs to at least one person");
+        System.out.println(animalRepository.existsByAnimal(animalRepository.findById(1L).orElse(null)));
+
+
+
 
 
     }
