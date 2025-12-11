@@ -73,4 +73,25 @@ public class Person {
         this.age = age;
     }
 
+
+    public String getLogin() {
+        return login;
+    }
+    public void setLogin(String login) {
+        this.login = login;
+    }
+    public String getMdp() {
+        return mdp;
+    }
+    public void setMdp(String mdp) {
+        this.mdp = mdp;
+    }
+    public Byte getActive() {
+        return active;
+    }
+    public void setActive(Byte active) {
+        this.active = active;
+    }
+
+
 }

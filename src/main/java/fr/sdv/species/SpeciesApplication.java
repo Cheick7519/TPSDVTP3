@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.transaction.annotation.Transactional;
 
 @SpringBootApplication
 public class SpeciesApplication implements CommandLineRunner{
@@ -23,7 +24,7 @@ public class SpeciesApplication implements CommandLineRunner{
     public static void main(String[] args) {
         SpringApplication.run(SpeciesApplication.class, args);
     }
-
+    @Transactional
     @Override
     public void run(String... args) throws Exception {
         System.out.println("Species Application is running...");
@@ -74,6 +75,15 @@ public class SpeciesApplication implements CommandLineRunner{
         System.out.println(animalRepository.existsByAnimal(animalRepository.findById(1L).orElse(null)));
 
 
+        // Générer 5 personnes aléatoires
+        personneRepository.generateRandomPersons(1);
+
+        // Afficher le nombre total de personnes après génération
+        System.out.println("Nombre total de personnes après génération : " + personneRepository.count());
+        // Supprimer toutes les personnes qui n’ont pas d’animaux
+        personneRepository.deletePersonsWithoutAnimals();
+        // Afficher le nombre total de personnes après suppression
+        System.out.println("Nombre total de personnes après suppression : " + personneRepository.count());
 
 
 

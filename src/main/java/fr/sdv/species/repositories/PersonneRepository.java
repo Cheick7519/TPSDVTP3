@@ -4,13 +4,15 @@ import fr.sdv.species.model.Person;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Repository
-public interface PersonneRepository extends JpaRepository<Person, Long> {
+public interface PersonneRepository extends JpaRepository<Person, Long>, PersonRepositoryCustom {
 
   Person findByFirstname(String firstname);
+
 
   // Find persons by last name OR first name
   List<Person> findByLastnameOrFirstname(String lastname, String firstname);
@@ -26,6 +28,7 @@ public interface PersonneRepository extends JpaRepository<Person, Long> {
   //Indice : utiliser une jointure (inner join) vers Animal OU utiliser l’opérateur MEMBEROF
   @Query("SELECT p FROM Person p JOIN p.animals a WHERE a.id = :animalId")
   List<Person> findByAnimalId(int animalId);
+ // Générer x entités Person aléatoires
 
 
 
