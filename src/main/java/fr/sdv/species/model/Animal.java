@@ -23,6 +23,8 @@ public class Animal {
 
     @ManyToMany(mappedBy = "animals")
     private List<Person> persons = new ArrayList<>();
+
+    // getter/setter methods
     public String getName() {
         return name;
     }
@@ -35,9 +37,6 @@ public class Animal {
     public void setColor(String color) {
         this.color = color;
     }
-
-
-
     public void setId(int id) {
         this.id = id;
     }
@@ -45,6 +44,22 @@ public class Animal {
     public int getId() {
         return id;
     }
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+    public Species getSpecies() {
+        return species;
+    }
+    public void setSpecies(Species species) {
+        this.species = species;
+    }
+
+
+
 
 
 

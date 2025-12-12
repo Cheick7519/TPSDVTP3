@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Repository
-public interface PersonneRepository extends JpaRepository<Person, Long>, PersonRepositoryCustom {
+public interface PersonRepository extends JpaRepository<Person, Long>, PersonRepositoryCustom {
 
   Person findByFirstname(String firstname);
 
